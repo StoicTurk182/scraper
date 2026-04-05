@@ -26,6 +26,7 @@ from core.fetcher import PageFetcher
 from core.converter import HtmlToMarkdown
 from core.database import ScrapeDatabase
 from core.file_handler import FileHandler
+from core.dashboard import DashboardGenerator
 
 
 # ============================================================================
@@ -307,6 +308,7 @@ examples:
   python scraper.py --history
   python scraper.py --stats
   python scraper.py --search microsoft
+  python scraper.py --dashboard
         """,
     )
 
@@ -353,6 +355,10 @@ examples:
         "--search", "-s",
         help="Search scrape history by keyword",
     )
+    parser.add_argument(
+        "--dashboard", action="store_true",
+        help="Generate an HTML dashboard from the scrape database",
+    )
 
     args = parser.parse_args()
 
@@ -367,6 +373,13 @@ examples:
 
     if args.search:
         search_history(args.search)
+        return
+
+    if args.dashboard:
+        gen = DashboardGenerator()
+        path = gen.generate()
+        print(f"\n  Dashboard generated: {path}")
+        print(f"  Open in browser to view.\n")
         return
 
     if args.batch:
