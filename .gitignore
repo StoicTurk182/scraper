@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+scrapes.db
+config.json
+dashboard.html
