@@ -1,0 +1,17 @@
+cd "$env:USERPROFILE\Andrew J IT Labs\PYTHON\PROJECTS\web-scraper-md"
+
+@"
+venv/
+__pycache__/
+*.pyc
+scrapes.db
+config.json
+dashboard.html
+"@ | Out-File -FilePath ".gitignore" -Encoding UTF8
+
+git init
+git branch -m main
+git remote add origin git@github.com:StoicTurk182/scraper.git
+git add -A
+git commit -m "Feat: .md scraper for integration with Hugo web development and Python learning"
+git push -u origin main
